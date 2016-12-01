@@ -1,4 +1,4 @@
-def turnRight(direction):
+def turn_right(direction):
     return {
         'north': 'east',
         'east': 'south',
@@ -6,7 +6,7 @@ def turnRight(direction):
         'west': 'north'
     }.get(direction)
 
-def turnLeft(direction):
+def turn_left(direction):
     return {
         'north': 'west',
         'west': 'south',
@@ -42,11 +42,11 @@ for i in input:
     distance = int(i[1:])
     if turn is "R":
         print("Turning right")
-        direction = turnRight(direction)
+        direction = turn_right(direction)
         print("Facing %s" % direction)
     elif turn is "L":
         print("Turning left")
-        direction = turnLeft(direction)
+        direction = turn_left(direction)
         print("Facing %s" % direction)
     print("Travelling %d" % distance)
     travel(direction, distance)
