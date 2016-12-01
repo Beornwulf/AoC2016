@@ -37,19 +37,20 @@ y = 0
 
 for i in input:
     print(i)
-    for j in i:
-        if j is "R":
-            print("Turning right")
-            direction = turnRight(direction)
-            print("Facing %s" % direction)
-        elif j is "L":
-            print("Turning left")
-            direction = turnLeft(direction)
-            print("Facing %s" % direction)
-        else:
-            print("Travelling %s" % j)
-            travel(direction, int(j))
-            print("Now at %d,%d" % (x, y))
+    turn = i[0]
+    print(turn)
+    distance = int(i[1:])
+    if turn is "R":
+        print("Turning right")
+        direction = turnRight(direction)
+        print("Facing %s" % direction)
+    elif turn is "L":
+        print("Turning left")
+        direction = turnLeft(direction)
+        print("Facing %s" % direction)
+    print("Travelling %d" % distance)
+    travel(direction, distance)
+    print("Now at %d,%d" % (x, y))
 
 print("Total distance: %d" % (abs(x)+abs(y)))
             
