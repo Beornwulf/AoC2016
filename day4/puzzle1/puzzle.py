@@ -8,7 +8,17 @@ input = input.splitlines()
 sector_sum = 0
 
 def sort_characters(characters):
-    
+    characters = sorted(zip(characters.values(), characters.keys()), reverse=True)
+    changed = True
+    while changed:
+        changed = False
+        for index, i in enumerate(characters):
+            (count, character) = i
+            last_index = index - 1
+            if (i > 0 and count == characters[last_index][0] and character < characters[last_index][1]):
+                characters[index], characters[last_index] = characters[last_index], characters[index]
+                changed = True
+    return(characters)
 
 for line in input:
     words = line.split('-')
@@ -24,7 +34,14 @@ for line in input:
             characters[character] += 1
         else:
             characters[character] = 1
+    characters = sort_characters(characters)
+    generated_hash = ''
+    for i in range(5):
+        generated_hash += characters[i][1]
     print(characters)
-    
+    print(generated_hash)
+    if generated_hash == hash:
+        sector_sum += sector
+
 print(sector_sum)
 
